@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.agibank.aposentarbemfx.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox alignment="CENTER" prefHeight="590.0" prefWidth="390.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.HelloController">
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="welcomeText" alignment="CENTER" blendMode="SRC_ATOP" contentDisplay="CENTER" graphicTextGap="0.0" lineSpacing="4.0" prefHeight="181.0" prefWidth="194.0" text="aposentarBem, sua calculadora de simulação para aposentadoria" textAlignment="CENTER" textFill="#e5e5e5" textOverrun="CLIP" translateY="-100.0" wrapText="true">
+      <font>
+         <Font name="Segoe UI Bold" size="20.0" />
+      </font></Label>
+    <ImageView fx:id="imageView" fitHeight="177.0" fitWidth="194.0" preserveRatio="true" translateY="-50.0">
+        <image>
+            <Image url="@../../../assets/aposentarBem.png" />
+        </image>
+    </ImageView>
+    <Button onAction="#onHelloButtonClick" text="Iniciar simulação" />
 </VBox>

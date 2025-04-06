@@ -17,20 +17,19 @@ ext {
     junitVersion = '5.10.2'
 }
 
-sourceCompatibility = '8'
-targetCompatibility = '8'
+sourceCompatibility = '21'
+targetCompatibility = '21'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 application {
-    mainModule = 'com.agibank.aposentarbemfx'
-    mainClass = 'com.agibank.aposentarbemfx.HelloApplication'
+    mainClass = 'com.agibank.aposentarbemfx.Main'
 }
 
 javafx {
-    version = '17.0.6'
+    version = '17.0.12'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
@@ -39,9 +38,7 @@ dependencies {
     implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
         exclude(group: 'org.openjfx')
     }
-    implementation('net.synedra:validatorfx:0.5.0') {
-        exclude(group: 'org.openjfx')
-    }
+
     implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
 
