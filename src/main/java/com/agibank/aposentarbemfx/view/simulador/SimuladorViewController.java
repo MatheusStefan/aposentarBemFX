@@ -1,5 +1,6 @@
 package com.agibank.aposentarbemfx.view.simulador;
 
+import com.agibank.aposentarbemfx.Main;
 import com.agibank.aposentarbemfx.model.Contribuicao;
 import com.agibank.aposentarbemfx.model.Usuario;
 import com.agibank.aposentarbemfx.service.ElegibilidadeService;
@@ -86,9 +87,6 @@ public class SimuladorViewController {
 
     @FXML
     private Button btnVoltar;
-
-    @FXML
-    private Button btnGerarRelatorio;
 
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -180,7 +178,7 @@ public class SimuladorViewController {
     private void handleVoltar() {
         try {
             // Voltar para a tela de contribuição
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/agibank/aposentarbemfx/ContribuicaoView.fxml"));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/agibank/aposentarbemfx/UsuarioView.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
@@ -189,58 +187,6 @@ public class SimuladorViewController {
             stage.show();
         } catch (IOException e) {
             showError("Erro ao voltar para a tela anterior: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void handleGerarRelatorio() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Salvar Relatório da Simulação");
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Arquivos de Texto", "*.txt"));
-        fileChooser.setInitialFileName("simulacao_aposentadoria_" +
-                usuario.getNome().replaceAll("\\s+", "_") + ".txt");
-
-        File file = fileChooser.showSaveDialog(btnGerarRelatorio.getScene().getWindow());
-
-        if (file != null) {
-            try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
-                writer.println("🔹 🔹 🔹 SIMULAÇÃO DE APOSENTADORIA 🔹 🔹 🔹");
-                writer.println();
-                writer.println("DADOS DO USUÁRIO");
-                writer.println("Nome: " + usuario.getNome());
-                writer.println("Data de Nascimento: " + usuario.getDataNascimento().format(dateFormatter));
-                writer.println("Profissão: " + usuario.getProfissao());
-                writer.println("Idade desejada para aposentadoria: " + usuario.getIdadeAposentadoriaDesejada());
-                writer.println("Total de contribuições: " + contribuicoes.size());
-                writer.println();
-
-                writer.println("RESUMO DA ELEGIBILIDADE");
-                writer.println("Idade mínima necessária: " + lblIdadeMinima.getText());
-                writer.println("Tempo total de contribuição: " + lblTempoContribuicao.getText());
-                writer.println("Data estimada para aposentadoria: " + lblDataElegivel.getText());
-                writer.println();
-
-                writer.println("REGRAS DE APOSENTADORIA");
-                writer.println(lblStatusPedagio50.getText() + " Pedágio 50%: " + lblElegivelPedagio50.getText());
-                writer.println("    " + lblValorPedagio50.getText());
-                writer.println();
-
-                writer.println(lblStatusPedagio100.getText() + " Pedágio 100%: " + lblElegivelPedagio100.getText());
-                writer.println("    " + lblValorPedagio100.getText());
-                writer.println();
-
-                writer.println(lblStatusPosReforma.getText() + " Regra Pós-Reforma: " + lblElegivelPosReforma.getText());
-                writer.println("    " + lblValorPosReforma.getText());
-                writer.println();
-
-                writer.println("🔹 🔹 🔹 FIM DA SIMULAÇÃO 🔹 🔹 🔹");
-                writer.println("Relatório gerado em: " + LocalDate.now().format(dateFormatter));
-
-                showInfo("Relatório salvo com sucesso em: " + file.getAbsolutePath());
-            } catch (IOException e) {
-                showError("Erro ao salvar o relatório: " + e.getMessage());
-            }
         }
     }
 

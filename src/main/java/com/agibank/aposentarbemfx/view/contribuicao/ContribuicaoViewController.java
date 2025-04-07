@@ -5,6 +5,8 @@ import com.agibank.aposentarbemfx.model.Contribuicao;
 import com.agibank.aposentarbemfx.model.Usuario;
 import com.agibank.aposentarbemfx.view.simulador.SimuladorView;
 import com.agibank.aposentarbemfx.view.simulador.SimuladorViewController;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -31,6 +33,8 @@ public class ContribuicaoViewController {
     @FXML
     private Label mensagemLabel;
     @FXML
+    private Button simularButton;
+    @FXML
     private TableView<Contribuicao> contribuicoesTableView;
     @FXML
     private TableColumn<Contribuicao, Double> valorSalarioColumn;
@@ -56,11 +60,9 @@ public class ContribuicaoViewController {
         periodoFimColumn.setCellValueFactory(new PropertyValueFactory<>("periodoFim"));
 
         contribuicoesTableView.setItems(contribuicoes);
-        // Load existing contributions for the user
         contribuicoes.addAll(contribuicaoController.buscarContribuicoesPorUsuario(usuario.getId()));
+        simularButton.disableProperty().bind(Bindings.size(contribuicoes).lessThan(3));
     }
-
-    // Add this method to your ContribuicaoViewController class
 
     @FXML
     private void handleSimular() {
@@ -68,12 +70,10 @@ public class ContribuicaoViewController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/agibank/aposentarbemfx/SimuladorView.fxml"));
             Parent root = loader.load();
 
-            // Get the controller and pass the usuario and contribuicoes data
             SimuladorViewController simuladorController = loader.getController();
             List<Contribuicao> contribuicoes = contribuicaoController.buscarContribuicoesPorUsuario(usuario.getId());
             simuladorController.setDados(usuario, contribuicoes);
 
-            // Set the scene in the current stage
             Stage stage = (Stage) contribuicoesTableView.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Simulação de Aposentadoria");

@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController">
-    <GridPane alignment="CENTER" vgap="20">
-        <Label text="Valor do Salário:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <TextField fx:id="valorSalarioField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="390.0" spacing="30.0" style="-fx-background-color: #1B1B1B;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController">
+   <Label prefHeight="27.0" prefWidth="308.0" text="JANELA DE CONTRIBUIÇÕES" textFill="#f8f9fa">
+      <font>
+         <Font name="Segoe UI Black" size="22.0" />
+      </font>
+   </Label>
+    <GridPane alignment="BASELINE_CENTER" hgap="10.0" vgap="20">
+        <Label text="Valor do Salário:" textFill="#f8f9fa" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="valorSalarioField" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #f8f9fa;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Label text="Período de Início:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <DatePicker fx:id="periodoInicioPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Período de Início:" textFill="#f8f9fa" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <DatePicker fx:id="periodoInicioPicker" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <Label text="Período de Fim:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <DatePicker fx:id="periodoFimPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-
-        <Button onAction="#handleAdicionarContribuicao" text="Adicionar Contribuição" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-        <Button onAction="#handleSimular" text="Simular Aposentadoria" translateX="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="Período de Fim:" textFill="#f8f9fa" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <DatePicker fx:id="periodoFimPicker" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
         <Label fx:id="mensagemLabel" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
         <columnConstraints>
@@ -31,11 +34,26 @@
             <RowConstraints />
         </rowConstraints>
     </GridPane>
-    <TableView fx:id="contribuicoesTableView" VBox.vgrow="ALWAYS">
+
+
+     <Button onAction="#handleAdicionarContribuicao" prefHeight="14.0" prefWidth="170.0" style="-fx-background-color: #3498DB;" text="Adicionar Contribuição" textAlignment="JUSTIFY" textFill="WHITE" translateY="-50.0">
+      <font>
+         <Font name="Segoe UI Bold" size="13.0" />
+      </font>
+   </Button>
+     <Button fx:id="" onAction="#handleSimular" prefHeight="0.0" prefWidth="170.0" style="-fx-background-color: #2fc74f;" text="Simular Aposentadoria" textFill="WHITE" translateY="-50.0">
+      <font>
+         <Font name="Segoe UI Black" size="12.0" />
+      </font>
+   </Button>
+    <TableView fx:id="contribuicoesTableView" prefHeight="500.0" style="-fx-background-color: #808080;" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn fx:id="valorSalarioColumn" text="Valor do Salário" />
-            <TableColumn fx:id="periodoInicioColumn" text="Período de Início" />
-            <TableColumn fx:id="periodoFimColumn" text="Período de Fim" />
+            <TableColumn fx:id="valorSalarioColumn" prefWidth="114.0" text="Valor do Salário" />
+            <TableColumn fx:id="periodoInicioColumn" prefWidth="120.0" text="Período de Início" />
+            <TableColumn fx:id="periodoFimColumn" prefWidth="115.0" text="Período de Fim" />
         </columns>
     </TableView>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
 </VBox>

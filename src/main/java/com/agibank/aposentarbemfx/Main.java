@@ -6,7 +6,6 @@ import com.agibank.aposentarbemfx.dao.contribuicao.ContribuicaoDAOImpl;
 import com.agibank.aposentarbemfx.dao.usuario.UsuarioDAOImpl;
 import com.agibank.aposentarbemfx.view.usuario.UsuarioView;
 import com.agibank.aposentarbemfx.view.usuario.UsuarioViewController;
-import com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

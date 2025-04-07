@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.simulador.SimuladorViewController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1b1b1b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.simulador.SimuladorViewController">
     <top>
-        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #2C3E50;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #2fc74f;" BorderPane.alignment="CENTER">
             <children>
                 <Label text="Simulação de Aposentadoria" textFill="WHITE">
                     <font>
@@ -20,7 +20,7 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
             <children>
-                <Label text="Dados do Usuário" textFill="#2c3e50">
+                <Label text="Dados do Usuário" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -38,22 +38,22 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Nome:" />
-                        <Label text="Data de Nascimento:" GridPane.rowIndex="1" />
-                        <Label text="Profissão:" GridPane.rowIndex="2" />
-                        <Label text="Idade desejada para aposentadoria:" GridPane.rowIndex="3" />
-                        <Label text="Total de contribuições:" GridPane.rowIndex="4" />
-                        <Label fx:id="lblNomeUsuario" text="Nome do Usuário" GridPane.columnIndex="1" />
-                        <Label fx:id="lblDataNascimento" text="01/01/1980" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lblProfissao" text="Desenvolvedor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="lblIdadeDesejada" text="65" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="lblTotalContribuicoes" text="120" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Nome:" textFill="WHITE" />
+                        <Label text="Data de Nascimento:" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Label text="Profissão:" textFill="WHITE" GridPane.rowIndex="2" />
+                        <Label text="Idade desejada para aposentadoria:" textFill="WHITE" GridPane.rowIndex="3" />
+                        <Label text="Total de contribuições:" textFill="WHITE" GridPane.rowIndex="4" />
+                        <Label fx:id="lblNomeUsuario" text="Nome do Usuário" textFill="WHITE" GridPane.columnIndex="1" />
+                        <Label fx:id="lblDataNascimento" text="01/01/1980" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblProfissao" text="Desenvolvedor" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblIdadeDesejada" text="65" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lblTotalContribuicoes" text="120" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
 
                 <Separator />
 
-                <Label text="Resumo da Elegibilidade" textFill="#2c3e50">
+                <Label text="Resumo da Elegibilidade" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -69,18 +69,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Idade mínima necessária:" />
-                        <Label text="Tempo total de contribuição:" GridPane.rowIndex="1" />
-                        <Label text="Data estimada para aposentadoria:" GridPane.rowIndex="2" />
-                        <Label fx:id="lblIdadeMinima" text="65 anos" GridPane.columnIndex="1" />
-                        <Label fx:id="lblTempoContribuicao" text="25 anos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lblDataElegivel" text="01/01/2030" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Idade mínima necessária:" textFill="WHITE" />
+                        <Label text="Tempo total de contribuição:" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Label text="Data estimada para aposentadoria:" textFill="WHITE" GridPane.rowIndex="2" />
+                        <Label fx:id="lblIdadeMinima" text="65 anos" textFill="WHITE" GridPane.columnIndex="1" />
+                        <Label fx:id="lblTempoContribuicao" text="25 anos" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblDataElegivel" text="01/01/2030" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
 
                 <Separator />
 
-                <Label text="Regras de Aposentadoria" textFill="#2c3e50">
+                <Label text="Regras de Aposentadoria" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -88,44 +88,39 @@
 
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <children>
-                        <Label fx:id="lblStatusPedagio50" style="-fx-font-weight: bold;" text="✅" />
-                        <Label text="Pedágio 50%:" />
-                        <Label fx:id="lblElegivelPedagio50" style="-fx-font-weight: bold;" text="Elegível" />
+                        <Label fx:id="lblStatusPedagio50" style="-fx-font-weight: bold;" text="✅" textFill="WHITE" />
+                        <Label text="Pedágio 50%:" textFill="WHITE" />
+                        <Label fx:id="lblElegivelPedagio50" style="-fx-font-weight: bold;" text="Elegível" textFill="WHITE" />
                     </children>
                 </HBox>
-                <Label fx:id="lblValorPedagio50" text="Valor estimado: R$ 0,00" />
+                <Label fx:id="lblValorPedagio50" text="Valor estimado: R$ 0,00" textFill="WHITE" />
 
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <children>
-                        <Label fx:id="lblStatusPedagio100" style="-fx-font-weight: bold;" text="✅" />
-                        <Label text="Pedágio 100%:" />
-                        <Label fx:id="lblElegivelPedagio100" style="-fx-font-weight: bold;" text="Elegível" />
+                        <Label fx:id="lblStatusPedagio100" style="-fx-font-weight: bold;" text="✅" textFill="WHITE" />
+                        <Label text="Pedágio 100%:" textFill="WHITE" />
+                        <Label fx:id="lblElegivelPedagio100" style="-fx-font-weight: bold;" text="Elegível" textFill="WHITE" />
                     </children>
                 </HBox>
-                <Label fx:id="lblValorPedagio100" text="Valor estimado: R$ 0,00" />
+                <Label fx:id="lblValorPedagio100" text="Valor estimado: R$ 0,00" textFill="WHITE" />
 
                 <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <children>
-                        <Label fx:id="lblStatusPosReforma" style="-fx-font-weight: bold;" text="✅" />
-                        <Label text="Regra Pós-Reforma:" />
-                        <Label fx:id="lblElegivelPosReforma" style="-fx-font-weight: bold;" text="Elegível" />
+                        <Label fx:id="lblStatusPosReforma" style="-fx-font-weight: bold;" text="✅" textFill="WHITE" />
+                        <Label text="Regra Pós-Reforma:" textFill="WHITE" />
+                        <Label fx:id="lblElegivelPosReforma" style="-fx-font-weight: bold;" text="Elegível" textFill="WHITE" />
                     </children>
                 </HBox>
-                <Label fx:id="lblValorPosReforma" text="Valor estimado: R$ 0,00" />
+                <Label fx:id="lblValorPosReforma" text="Valor estimado: R$ 0,00" textFill="WHITE" />
             </children>
         </VBox>
     </center>
     <bottom>
         <HBox alignment="CENTER_RIGHT" prefHeight="60.0" prefWidth="200.0" spacing="15.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #3498DB;" text="Voltar" textFill="WHITE">
+                <Button fx:id="btnVoltar" mnemonicParsing="false" onAction="#handleVoltar" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #3498DB;" text="Recomeçar" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Button>
-                <Button fx:id="btnGerarRelatorio" mnemonicParsing="false" onAction="#handleGerarRelatorio" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2ECC71;" text="Gerar Relatório" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Segoe UI Black" size="14.0" />
                     </font>
                 </Button>
             </children>
@@ -134,7 +129,7 @@
             </padding>
         </HBox>
     </bottom>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
 </BorderPane>
