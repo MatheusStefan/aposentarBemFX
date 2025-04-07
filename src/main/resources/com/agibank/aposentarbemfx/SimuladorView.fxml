@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1b1b1b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.simulador.SimuladorViewController">
+<BorderPane prefHeight="600.0" prefWidth="390.0" style="-fx-background-color: #1b1b1b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.simulador.SimuladorViewController">
     <top>
         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: #2fc74f;" BorderPane.alignment="CENTER">
             <children>
@@ -15,6 +15,9 @@
                     </font>
                 </Label>
             </children>
+         <BorderPane.margin>
+            <Insets bottom="24.0" />
+         </BorderPane.margin>
         </HBox>
     </top>
     <center>
