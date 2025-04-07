@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController">
+    <GridPane alignment="CENTER" vgap="20">
+        <Label text="Valor do Salário:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="valorSalarioField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Período de Início:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <DatePicker fx:id="periodoInicioPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Período de Fim:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <DatePicker fx:id="periodoFimPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+
+        <Button onAction="#handleAdicionarContribuicao" text="Adicionar Contribuição" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+        <Button onAction="#handleSimular" text="Simular Aposentadoria" translateX="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label fx:id="mensagemLabel" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+        <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+    </GridPane>
+    <TableView fx:id="contribuicoesTableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="valorSalarioColumn" text="Valor do Salário" />
+            <TableColumn fx:id="periodoInicioColumn" text="Período de Início" />
+            <TableColumn fx:id="periodoFimColumn" text="Período de Fim" />
+        </columns>
+    </TableView>
+</VBox>

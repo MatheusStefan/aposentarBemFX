@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="600" prefWidth="390" xmlns="http://javafx.com/javafx/11.0.14-internal" fx:controller="com.agibank.aposentarbemfx.view.usuario.UsuarioViewController">
+    <GridPane alignment="CENTER" vgap="20">
+        <Label text="Nome:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="nomeField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Data de Nascimento (DD/MM/AAAA):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="dataNascimentoField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Gênero (Masculino/Feminino):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="generoField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Profissão (Geral, Professor, Rural):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="profissaoField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Idade de Aposentadoria Desejada:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="idadeAposentadoriaField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Button onAction="#handleCalcular" text="Calcular" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+
+        <Label fx:id="mensagemLabel" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </padding>
+    </GridPane>
+</VBox>
