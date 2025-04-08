@@ -24,7 +24,7 @@ public class Main extends Application {
         ContribuicaoDAOImpl contribuicaoDAO = new ContribuicaoDAOImpl();
         ContribuicaoController contribuicaoController = new ContribuicaoController(contribuicaoDAO);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/agibank/aposentarbemfx/UsuarioView.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/agibank/aposentarbemfx/UsuarioView.fxml"));
         UsuarioViewController usuarioViewController = new UsuarioViewController(usuarioController);
         loader.setControllerFactory(param -> new UsuarioViewController(usuarioController));
 

@@ -64,7 +64,7 @@ public class UsuarioViewController {
     }
 
     private void navigateToContribuicaoScreen() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/agibank/aposentarbemfx/ContribuicaoView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/agibank/aposentarbemfx/ContribuicaoView.fxml"));
         loader.setControllerFactory(param -> new ContribuicaoViewController(new ContribuicaoController(new ContribuicaoDAOImpl()), usuarioController.getUsuario()));
 
         Parent contribuicaoRoot = loader.load();

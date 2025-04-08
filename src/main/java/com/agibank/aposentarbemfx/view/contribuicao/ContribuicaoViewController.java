@@ -1,5 +1,6 @@
 package com.agibank.aposentarbemfx.view.contribuicao;
 
+import com.agibank.aposentarbemfx.Main;
 import com.agibank.aposentarbemfx.controller.ContribuicaoController;
 import com.agibank.aposentarbemfx.model.Contribuicao;
 import com.agibank.aposentarbemfx.model.Usuario;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ContribuicaoViewController {
@@ -46,6 +48,8 @@ public class ContribuicaoViewController {
     private final ContribuicaoController contribuicaoController;
     private final Usuario usuario;
     private final ObservableList<Contribuicao> contribuicoes;
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 
     public ContribuicaoViewController(ContribuicaoController contribuicaoController, Usuario usuario) {
         this.contribuicaoController = contribuicaoController;
@@ -59,9 +63,45 @@ public class ContribuicaoViewController {
         periodoInicioColumn.setCellValueFactory(new PropertyValueFactory<>("periodoInicio"));
         periodoFimColumn.setCellValueFactory(new PropertyValueFactory<>("periodoFim"));
 
+        periodoInicioColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.format(dateFormatter));
+                }
+            }
+        });
+
+        periodoFimColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(item.format(dateFormatter));
+                }
+            }
+        });
+
+        valorSalarioColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(String.format("R$ %.2f", item));
+                }
+            }
+        });
+
         contribuicoesTableView.setItems(contribuicoes);
         contribuicoes.addAll(contribuicaoController.buscarContribuicoesPorUsuario(usuario.getId()));
-        simularButton.disableProperty().bind(Bindings.size(contribuicoes).lessThan(3));
+        simularButton.disableProperty().bind(Bindings.size(contribuicoes).lessThan(1));
     }
 
     @FXML
@@ -112,7 +152,7 @@ public class ContribuicaoViewController {
     }
 
     public void handleIrParaSimulacao() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/agibank/aposentarbemfx/SimuladorView.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/agibank/aposentarbemfx/SimuladorView.fxml"));
         loader.setControllerFactory(param -> new SimuladorViewController());
 
         Parent simulacaoRoot = loader.load();

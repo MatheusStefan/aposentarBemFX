@@ -7,6 +7,7 @@ import com.agibank.aposentarbemfx.service.ElegibilidadeService;
 import com.agibank.aposentarbemfx.service.RegraAposReformaService;
 import com.agibank.aposentarbemfx.service.RegraPedagio50;
 import com.agibank.aposentarbemfx.service.RegraPedagio100;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,13 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -85,10 +82,8 @@ public class SimuladorViewController {
     @FXML
     private Label lblValorPosReforma;
 
-    @FXML
-    private Button btnVoltar;
-
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter yearFormatter = DateTimeFormatter.ofPattern("yyyy");
 
     public SimuladorViewController() {
         this.elegibilidadeService = new ElegibilidadeService();
@@ -115,23 +110,20 @@ public class SimuladorViewController {
             return;
         }
 
-        // Atualizar dados do usuário
         lblNomeUsuario.setText(usuario.getNome());
         lblDataNascimento.setText(usuario.getDataNascimento().format(dateFormatter));
         lblProfissao.setText(usuario.getProfissao().toString());
         lblIdadeDesejada.setText(String.valueOf(usuario.getIdadeAposentadoriaDesejada()));
         lblTotalContribuicoes.setText(String.valueOf(contribuicoes.size()));
 
-        // Calcular e exibir informações de elegibilidade
         int idadeMinimaNecessaria = elegibilidadeService.calcularIdadeMinima(usuario);
         int tempoTotalContribuicao = elegibilidadeService.calcularTempoContribuicao(contribuicoes);
         LocalDate dataElegivel = elegibilidadeService.calcularDataElegivel(usuario, tempoTotalContribuicao);
 
         lblIdadeMinima.setText(idadeMinimaNecessaria + " anos");
         lblTempoContribuicao.setText(tempoTotalContribuicao + " anos");
-        lblDataElegivel.setText(dataElegivel.format(dateFormatter));
+        lblDataElegivel.setText(dataElegivel.format(yearFormatter));
 
-        // Verificar elegibilidade e calcular valor da aposentadoria pelo Pedágio 50%
         boolean elegivelPedagio50 = elegibilidadeService.isElegivelPedagio50(usuario, contribuicoes);
         lblStatusPedagio50.setText(elegivelPedagio50 ? "✅" : "❌");
         lblElegivelPedagio50.setText(elegivelPedagio50 ? "Elegível" : "Não elegível");
@@ -143,7 +135,6 @@ public class SimuladorViewController {
             lblValorPedagio50.setText("Não aplicável");
         }
 
-        // Verificar elegibilidade e calcular valor da aposentadoria pelo Pedágio 100%
         boolean elegivelPedagio100 = elegibilidadeService.isElegivelPedagio100(usuario, contribuicoes);
         lblStatusPedagio100.setText(elegivelPedagio100 ? "✅" : "❌");
         lblElegivelPedagio100.setText(elegivelPedagio100 ? "Elegível" : "Não elegível");
@@ -155,7 +146,6 @@ public class SimuladorViewController {
             lblValorPedagio100.setText("Não aplicável");
         }
 
-        // Verificar elegibilidade e calcular valor da aposentadoria pela Regra Pós-Reforma
         try {
             double valorAposReforma = regraAposReformaService.simularAposentadoria(usuario, contribuicoes);
             boolean elegivelPosReforma = valorAposReforma > 0;
@@ -171,22 +161,6 @@ public class SimuladorViewController {
             lblStatusPosReforma.setText("❌");
             lblElegivelPosReforma.setText("Erro no cálculo");
             lblValorPosReforma.setText("Erro: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void handleVoltar() {
-        try {
-            // Voltar para a tela de contribuição
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/agibank/aposentarbemfx/UsuarioView.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) btnVoltar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            showError("Erro ao voltar para a tela anterior: " + e.getMessage());
         }
     }
 
