@@ -26,7 +26,7 @@
         <Label text="Gênero (Masculino/Feminino):" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <TextField fx:id="generoField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-        <Label text="Profissão (Geral, Professor, Rural):" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label text="Categoria (Geral, Professor, Rural):" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="3" />
         <TextField fx:id="profissaoField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
         <Label text="Idade de Aposentadoria Desejada:" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="4" />
