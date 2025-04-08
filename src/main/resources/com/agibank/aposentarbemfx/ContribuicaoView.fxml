@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="390.0" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="390.0" spacing="30.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.contribuicao.ContribuicaoViewController">
    <Label prefHeight="27.0" prefWidth="308.0" text="JANELA DE CONTRIBUIÇÕES" textFill="#000">
       <font>
          <Font name="Segoe UI Black" size="22.0" />
@@ -51,7 +51,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-    <Label fx:id="mensagemLabel" textFill="#000"/>
+    <Label fx:id="mensagemLabel" textFill="#000" />
     <TableView fx:id="contribuicoesTableView" prefHeight="500.0" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="valorSalarioColumn" prefWidth="114.0" text="Valor do Salário" />

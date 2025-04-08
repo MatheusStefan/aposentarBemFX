@@ -3,10 +3,11 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="600" prefWidth="390" spacing="80.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.usuario.UsuarioViewController">
+<VBox alignment="CENTER" prefHeight="600" prefWidth="390" spacing="20.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.agibank.aposentarbemfx.view.usuario.UsuarioViewController">
    <Label alignment="CENTER" contentDisplay="CENTER" text="CALCULADORA DE APOSENTADORIA" textAlignment="JUSTIFY">
       <font>
          <Font name="Segoe UI Bold Italic" size="21.0" />
@@ -49,6 +50,12 @@
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
     </GridPane>
+
+    <ImageView fitHeight="107.0" fitWidth="146.0" preserveRatio="true">
+        <image>
+            <Image url="@/com/agibank/aposentarbemfx/aposentarBem_logo.png" />
+        </image>
+    </ImageView>
 
      <Button alignment="CENTER" contentDisplay="CENTER" onAction="#handleCalcular" prefHeight="36.0" style="-fx-background-color: #3498DB" text="Começar" textAlignment="CENTER" textFill="WHITE">
       <font>
