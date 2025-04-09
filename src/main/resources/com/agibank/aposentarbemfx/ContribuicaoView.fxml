@@ -17,7 +17,7 @@
         <TextField fx:id="valorSalarioField" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
         <Label text="Período de Início:" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <DatePicker fx:id="periodoInicioPicker" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <DatePicker  fx:id="periodoInicioPicker" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
         <Label text="Período de Fim:" textFill="#000" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <DatePicker fx:id="periodoFimPicker" prefHeight="25.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

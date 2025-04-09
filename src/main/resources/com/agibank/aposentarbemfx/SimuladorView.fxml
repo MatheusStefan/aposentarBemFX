@@ -72,9 +72,6 @@
                         <Label fx:id="lblIdadeDesejada" text="65" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="lblTotalContribuicoes" text="120" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
                 </GridPane>
 
                 <Separator />
@@ -111,6 +108,19 @@
                     </children>
                 </HBox>
                 <Label fx:id="lblValorPosReforma" text="Valor estimado: R$ 0,00" textFill="black" />
+
+                <!-- New Section for RegraPontos -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Regra por Pontos:" textFill="black" />
+                        <Label fx:id="lblStatusPontos" style="-fx-font-weight: bold;" text="✅" />
+                        <Label fx:id="lblElegivelPontos" style="-fx-font-weight: bold;" text="Elegível" textFill="black" />
+                    </children>
+                </HBox>
+                <Label fx:id="lblAnoAposentadoriaPontos" text="Ano da aposentadoria: 2030" textFill="black" />
+                <Label fx:id="lblValorEstimadoPontos" text="Valor estimado: R$ 0,00" textFill="black" />
+                <Label fx:id="lblEstimativaElegibilidadePontos" text="Estimativa de elegibilidade: Ano 2035, com 65 anos" textFill="black" />
+
                 <Separator />
                 <Label text="Resumo da Elegibilidade" textFill="black" underline="true">
                     <font>
@@ -145,15 +155,13 @@
                         </Label>
                         <Label fx:id="lblIdadeMinima" text="65 anos" textFill="black" GridPane.columnIndex="1" />
                         <Label fx:id="lblTempoContribuicao" text="25 anos" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lblDataElegivel" text="01/01/2030" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblDataElegivel" text="2030" textFill="black" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
-
-
             </children>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
+            <padding>
+                <Insets left="20.0" />
+            </padding>
         </VBox>
     </center>
 </BorderPane>

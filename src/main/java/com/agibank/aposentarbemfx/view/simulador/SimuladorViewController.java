@@ -3,10 +3,7 @@ package com.agibank.aposentarbemfx.view.simulador;
 import com.agibank.aposentarbemfx.Main;
 import com.agibank.aposentarbemfx.model.Contribuicao;
 import com.agibank.aposentarbemfx.model.Usuario;
-import com.agibank.aposentarbemfx.service.ElegibilidadeService;
-import com.agibank.aposentarbemfx.service.RegraAposReformaService;
-import com.agibank.aposentarbemfx.service.RegraPedagio50;
-import com.agibank.aposentarbemfx.service.RegraPedagio100;
+import com.agibank.aposentarbemfx.service.*;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +18,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 public class SimuladorViewController {
 
@@ -81,6 +79,16 @@ public class SimuladorViewController {
 
     @FXML
     private Label lblValorPosReforma;
+    @FXML
+    private Label lblElegivelPontos;
+
+    @FXML Label lblStatusPontos;
+    @FXML
+    private Label lblAnoAposentadoriaPontos;
+    @FXML
+    private Label lblValorEstimadoPontos;
+    @FXML
+    private Label lblEstimativaElegibilidadePontos;
 
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final DateTimeFormatter yearFormatter = DateTimeFormatter.ofPattern("yyyy");
@@ -161,6 +169,35 @@ public class SimuladorViewController {
             lblStatusPosReforma.setText("❌");
             lblElegivelPosReforma.setText("Erro no cálculo");
             lblValorPosReforma.setText("Erro: " + e.getMessage());
+        }
+
+        calcularRegraPontos();
+    }
+
+    private void calcularRegraPontos() {
+        RegraPontos regraPontos = new RegraPontos(elegibilidadeService);
+        Map<String, Object> resultadoPontos = regraPontos.calcularRegraPontos(usuario, contribuicoes, usuario.getIdadeAposentadoriaDesejada());
+
+        boolean elegivelPontos = (boolean) resultadoPontos.get("elegivel");
+        if (elegivelPontos) {
+            double valor = (double) resultadoPontos.get("valorEstimado");
+            int ano = (int) resultadoPontos.get("anoElegivel");
+
+            lblElegivelPontos.setText("Regra por Pontos: Elegível");
+            lblStatusPontos.setText("✅");
+            lblAnoAposentadoriaPontos.setText("📅 Ano da aposentadoria: " + ano);
+            lblValorEstimadoPontos.setText("💰 Valor estimado: R$ " + String.format("%.2f", valor));
+            lblEstimativaElegibilidadePontos.setText("");
+        } else {
+            int idadeEstimativa = (int) resultadoPontos.get("idadeElegivel");
+            int anoEstimativa = (int) resultadoPontos.get("anoElegivel");
+            double valorEstimado = (double) resultadoPontos.get("valorEstimado");
+
+            lblElegivelPontos.setText("Regra por Pontos: Ainda não elegível");
+            lblStatusPontos.setText("❌");
+            lblEstimativaElegibilidadePontos.setText("📅 Estimativa de elegibilidade: Ano " + anoEstimativa + ", com " + idadeEstimativa + " anos de idade");
+            lblValorEstimadoPontos.setText("💰 Valor estimado na data: R$ " + String.format("%.2f", valorEstimado));
+            lblAnoAposentadoriaPontos.setText("");
         }
     }
 
